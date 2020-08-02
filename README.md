@@ -109,3 +109,19 @@ following API endpoints following the steps below:
 
    Get the facilities and associated crowd "band". Supports filtering of records
    by date range: start date (`start`), end date (`end`).
+
+### Assumptions
+
+- Public data API:
+  - JSON data format remain the same.
+  - Encryption algorithm and key doesn't change.
+  - Facility list is not historical data. Thus, when the cron job download the latest facility data, it will overwrite the data in a local database.
+- Database design:
+  - Data schema: data type for fields are inferred from their value type in the return JSON data.
+- REST API:
+  - Filters:
+    - Date range: start date and end date should be in this date format, `YYYY-mm-dd`. Example, `2020-07-31`.
+  - Pagination of records:
+    - The query string parameters I will use for pagination are `skip` and `limit`.
+    - The `skip` parameter will be used to skip past the number of rows specified while `limit` will limit the number of rows returned. If a value isn't provided by the user, I'll return everything by default. 
+  - No sorting of records.
