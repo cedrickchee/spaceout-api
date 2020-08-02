@@ -125,3 +125,16 @@ following API endpoints following the steps below:
     - The query string parameters I will use for pagination are `skip` and `limit`.
     - The `skip` parameter will be used to skip past the number of rows specified while `limit` will limit the number of rows returned. If a value isn't provided by the user, I'll return everything by default. 
   - No sorting of records.
+
+### Future Improvements
+
+- Implement [performance and reliability best practices for Express in production](https://expressjs.com/en/advanced/best-practice-performance.html).
+- Implement [security best practices for Express in production](https://expressjs.com/en/advanced/best-practice-security.html).
+- Add logging and monitoring.
+- Testing JavaScript
+  - Write more (and effective) tests for application's business logic.
+  - Test Express middleware, API routes, controllers, authenticated code, and mocking third party dependencies.
+- Automation
+  - Setup Continuous Integration(CI) and Continuous Delivery (CD) with [CircleCI](https://circleci.com/) or similar tool and deploy our project to Cloud servers.
+    - Use CI to automatically merge code changes into a single shared repository. Then each integration is verify by an automated tool that checks for code style and run tests before each build.
+    - Deploying all code changes to a testing environment and/or production environment after the build stage. We can create a job and configure CircleCI to deploy to virtually any target.
