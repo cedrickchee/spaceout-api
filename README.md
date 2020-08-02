@@ -84,6 +84,8 @@ See the Postman docs on [how to import the Postman data file](https://learning.p
 
 ### Test Instructions
 
+![](media/images/postman.png)
+
 Open Postman, and choose "SpaceOut" collections from your Postman workspace.
 First, authenticate a user and get a JWT token. Next, send HTTP requests to the
 following API endpoints following the steps below:
