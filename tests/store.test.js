@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 
-const {
-  downloadedFacility,
-  downloadedCrowdlevel,
-  setupDatabase,
-} = require('./fixtures/db');
+const { downloadedFacility, downloadedCrowdlevel } = require('./fixtures/db');
 
 const store = require('../src/shared/db/store');
 
-beforeEach(setupDatabase);
+beforeAll(async () => {
+  require('../src/shared/db/mongoose');
+});
 
 afterAll(async () => {
   await mongoose.connection.close();
@@ -17,6 +15,8 @@ afterAll(async () => {
 describe('Test storing of downloaded data', () => {
   test('Should save facility data into database', async () => {
     const result = await store.saveFacility(downloadedFacility);
+
+    expect(result).toBeDefined();
 
     // Assertion to check the number of facilities saved
     expect(result.length).toBe(2);
@@ -27,6 +27,8 @@ describe('Test storing of downloaded data', () => {
 
   test('Should save crowd level data into database', async () => {
     const result = await store.saveCrowdlevel(downloadedCrowdlevel);
+
+    expect(result).toBeDefined();
 
     // Assertion to check the number of crowd levels saved
     expect(result.length).toBe(3);
