@@ -29,6 +29,8 @@ test('Should fetch facilities and associated crowd "band"', async () => {
     .send()
     .expect(200);
 
+  expect(response).toBeDefined();
+
   // Assertion to check the number of crowd "band"
   expect(response.body.length).toBe(3);
 
@@ -45,17 +47,17 @@ test('Should fetch the latest data point for each facility', async () => {
     .send()
     .expect(200);
 
+  expect(response).toBeDefined();
+
   // Assertion to check the number of crowd "band"
   expect(response.body.length).toBe(3);
 
   // Assertion to check if the crowd "band" is updated in the database
-  expect(response.body[0].id).toBe(crowdlevelFour.id);
+  expect(response.body[0].id).toBe(crowdlevelTwo.id);
 
   // Assertion to check if the crowd "band" createdAt is equal
-  expect(new Date(response.body[0].createdAt)).toEqual(
-    crowdlevelFour.createdAt,
-  );
-  expect(new Date(response.body[1].createdAt)).toEqual(crowdlevelTwo.createdAt);
+  expect(new Date(response.body[0].createdAt)).toEqual(crowdlevelTwo.createdAt);
+  expect(new Date(response.body[1].createdAt)).toEqual(crowdlevelOne.createdAt);
 });
 
 test('Should not able to fetch crowd "band" if unauthenticated', async () => {
