@@ -33,7 +33,7 @@ This project provides a RESTful API service for retrieving latest data and histo
   - [ESLint](https://eslint.org/): a tool that performs automated scans of JavaScript files for common syntax and style errors using ESLint rules.
   - [Prettier](https://prettier.io/): an opinionated code formatter that scans files for style issues and automatically reformats code to ensure consistent rules are being followed for indentation, spacing, semicolons, single quotes vs double quotes, etc.
   - [Husky](https://github.com/typicode/husky): lets us run commands or script before committing or pushing our code to git.
-  - [lint-staged](https://github.com/okonet/lint-staged): run linters on git staged files.
+  - [lint-staged](https://github.com/okonet/lint-staged): run linters on git staged files. Auto lint and format code on Git commit.
 - API is protected with JWT authentication.
 
 ## Getting Started
@@ -109,10 +109,3 @@ following API endpoints following the steps below:
 
    Get the facilities and associated crowd "band". Supports filtering of records
    by date range: start date (`start`), end date (`end`).
-
-## Git
-
-We're using ESLint and Prettier with pre-commit tool. We run linters against
-staged Git files and prevent bad commit slip into our code base.
-
-## Assumptions
