@@ -1,0 +1,87 @@
+{
+  "name": "spaceout-api",
+  "version": "0.0.1",
+  "description": "SpaceOut REST API",
+  "author": "Cedric Chee",
+  "license": "MIT",
+  "repository": "cedrickchee/spaceout-api",
+  "homepage": "https://www.spaceout.gov.sg/",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "env-cmd -f ./config/dev.env node src/index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd -f ./config/test.env jest --verbose --watch --runInBand --coverage",
+    "lint": "eslint . && echo 'Lint complete.'",
+    "lint:fix": "eslint --fix . && echo 'Lint complete.'",
+    "lint:stage": "lint-staged",
+    "pretty": "prettier --write \"./**/*.{js,json}\"",
+    "debug": "DEBUG=spaceout-api:* npm start"
+  },
+  "keywords": [
+    "api",
+    "web",
+    "app",
+    "express",
+    "restful"
+  ],
+  "private": "true",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "debug": "^4.1.1",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.19",
+    "multer": "^1.4.2",
+    "sharp": "^0.25.4",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "supertest": "^4.0.2"
+  },
+  "engines": {
+    "node": ">= 12.18.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 50,
+        "lines": 33,
+        "statements": 25
+      }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ]
+  }
+}
