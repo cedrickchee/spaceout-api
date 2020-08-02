@@ -26,7 +26,6 @@ const facilitySchema = mongoose.Schema(
     },
     roadName: {
       type: String,
-      // required: true,
     },
     otherName: {
       type: String,

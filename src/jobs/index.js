@@ -7,8 +7,8 @@ const store = require('../shared/db/store');
 
 const cronTime = `*/${process.env.CRON_TIME} * * * *`;
 
-// Job for fetching and download facilities data from data API every 1 minute
-// and store the data into a local database.
+// Job for fetching and download facilities data from data API every X minute
+// (default to 30 minutes) and store the data into a local database.
 const facilitiesJob = new CronJob(cronTime, async () => {
   console.log('Running facilities cron job');
   const data = await downloadFacilities();
@@ -16,8 +16,8 @@ const facilitiesJob = new CronJob(cronTime, async () => {
   console.log('Done saving facilities data');
 });
 
-// Job for fetching and download crowd levels data from data API every 2 minute
-// and store the data into a local database.
+// Job for fetching and download crowd levels data from data API every X minute
+// (default to 30 minutes) and store the data into a local database.
 const crowdLevelsJob = new CronJob(cronTime, async () => {
   console.log('Running crowd levels cron job');
   const data = await downloadCrowdLevels();

@@ -7,8 +7,6 @@ const url = 'https://www.spaceout.gov.sg/graphql';
 const getData = async () => {
   try {
     const response = await axios.get(url);
-    const data = response.data;
-    console.log(data);
     return response;
   } catch (error) {
     console.log(error);

@@ -4,8 +4,10 @@ const auth = require('../middleware/auth');
 
 const router = new express.Router();
 
-// GET /tasks?limit=10&skip=10
-// GET /tasks?type=supermarket&postalcode=521107
+// Get all facilities.
+// Example of HTTP requests:
+// - GET /tasks?limit=10&skip=10
+// - GET /tasks?type=supermarket&postalcode=521107
 router.get('/facilities', auth, async (req, res) => {
   const match = {};
 
@@ -31,7 +33,9 @@ router.get('/facilities', auth, async (req, res) => {
   }
 });
 
-// GET /facilities/82246e9b
+// Get one facility information.
+// Example of HTTP requests:
+// - GET /facilities/82246e9b
 router.get('/facilities/:id', auth, async (req, res) => {
   const id = req.params.id;
 

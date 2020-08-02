@@ -4,10 +4,12 @@ const auth = require('../middleware/auth');
 
 const router = new express.Router();
 
-// GET /crowdlevels
-// GET /crowdlevels?start=2020-07-25&end=2020-07-31
-// GET /crowdlevels?start=2020-07-25
-// GET /crowdlevels?end=2020-07-31
+// Get the facilities and associated crowd "band".
+// Example of HTTP requests:
+// - GET /crowdlevels
+// - GET /crowdlevels?start=2020-07-25&end=2020-07-31
+// - GET /crowdlevels?start=2020-07-25
+// - GET /crowdlevels?end=2020-07-31
 router.get('/crowdlevels', auth, async (req, res) => {
   let createdAt = {};
   let pipeline;
@@ -49,8 +51,8 @@ router.get('/crowdlevels', auth, async (req, res) => {
       const endDate = req.query.end.trim();
 
       createdAt = {
-        $gte: new Date(startDate), // '2020-07-25T00:00:00.000Z'
-        $lte: new Date(endDate), // '2020-07-31T06:30:00.000Z'
+        $gte: new Date(startDate), // e.g.: '2020-07-25T00:00:00.000Z'
+        $lte: new Date(endDate), // e.g.: '2020-07-31T06:30:00.000Z'
       };
     } else if (req.query.start) {
       // Return the average crowd band for each facility
@@ -58,7 +60,7 @@ router.get('/crowdlevels', auth, async (req, res) => {
       const startDate = req.query.start.trim();
 
       createdAt = {
-        $gte: new Date(startDate), // '2020-07-25T00:00:00.000Z'
+        $gte: new Date(startDate), // e.g.: '2020-07-25T00:00:00.000Z'
       };
     } else if (req.query.end) {
       // Return the average crowd band for each facility
@@ -66,7 +68,7 @@ router.get('/crowdlevels', auth, async (req, res) => {
       const endDate = req.query.end.trim();
 
       createdAt = {
-        $lte: new Date(endDate), // '2020-07-31T06:30:00.000Z'
+        $lte: new Date(endDate), // e.g.: '2020-07-31T06:30:00.000Z'
       };
     }
 
